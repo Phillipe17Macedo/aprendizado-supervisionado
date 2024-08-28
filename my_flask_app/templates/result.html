@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: url('background.jpg') no-repeat center center fixed;
+            background: url('/static/images/background-image.png') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -61,6 +61,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="/static/images/background-image.png" alt="Logo" width="50" borderRadius="20">
+        </div>
         <h1>Resultado da Predição</h1>
         <p>Região: {{ result['region'] }}</p>
         <p>Ano: {{ result['year'] }}</p>
