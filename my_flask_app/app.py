@@ -15,30 +15,38 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Dados de entrada ajustados para o modelo PMML
-    input_data = {
-        'region': request.form.get('region', 'USA'),
-        'category': request.form.get('category', 'Historical'),
-        'parameter': request.form.get('parameter', 'EV stock share'),
-        'mode': request.form.get('mode', 'Cars'),
-        'powertrain': request.form.get('powertrain', 'EV'),
-        'year': float(request.form.get('year', '2025')),
-        'unit': request.form.get('unit', 'percent'),
-        'value': float(request.form.get('value', '0.1'))
-    }
-
-    # Debug: Exibir os dados de entrada
-    print("Dados de entrada para predição:", input_data)
-
-    # Preparar os dados para o modelo
-    data = pd.DataFrame([input_data])
-
     try:
+        # Dados de entrada ajustados para o modelo PMML
+        input_data = {
+            'region': request.form.get('region', 'USA'),
+            'category': request.form.get('category', 'Historical'),
+            'parameter': request.form.get('parameter', 'EV stock share'),
+            'mode': request.form.get('mode', 'Cars'),
+            'powertrain': request.form.get('powertrain', 'EV'),
+            'year': float(request.form.get('year')),
+            'unit': request.form.get('unit', 'percent'),
+            'value': float(request.form.get('value'))
+        }
+
+        # Debug: Exibir os dados de entrada
+        print("Dados de entrada para predição:", input_data)
+
+        # Preparar os dados para o modelo
+        data = pd.DataFrame([input_data])
+
+        # Debug: Exibir o DataFrame preparado para o modelo
+        print("DataFrame para predição:", data)
+
         # Fazer a previsão com o modelo carregado
         result = model.predict(data)
 
         # Debug: Exibir todos os resultados retornados pelo modelo
         print("Resultado completo do modelo:", result)
+
+        # Verificar se há resultados válidos
+        if result.isnull().values.any():
+            print("Resultado do modelo contém valores NaN.")
+            return "Erro na previsão: Resultado do modelo contém valores NaN."
 
         # Obter a predição (ajuste conforme necessário)
         prediction = result.iloc[0].to_dict()
