@@ -19,11 +19,8 @@ def predict():
         # Dados de entrada ajustados para o modelo PMML
         input_data = {
             'region': request.form.get('region'),
-            'category': request.form.get('category'),
-            'parameter': request.form.get('parameter'),
             'powertrain': request.form.get('powertrain'),
             'year': float(request.form.get('year')),
-            'unit': request.form.get('unit', 'percent'),
             'value': float(request.form.get('value'))
         }
 

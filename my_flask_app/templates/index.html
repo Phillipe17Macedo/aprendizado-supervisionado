@@ -7,20 +7,78 @@
     <h1>Previsão de Estoque de EVs</h1>
     <form action="/predict" method="post">
         <label for="region">Região:</label>
-        <input type="text" id="region" name="region" value="" placeholder="Insira a região"><br><br>
-        <label for="category">Categoria:</label>
-        <input type="text" id="category" name="category" value="" placeholder="Insira a categoria"><br><br>
-        <label for="parameter">Parâmetro:</label>
-        <input type="text" id="parameter" name="parameter" value="" placeholder="Insira o parâmetro"><br><br>
+        <select id="region" name="region">
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Cyprus">Cyprus</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Estonia">Estonia</option>
+            <option value="EU27">EU27</option>
+            <option value="Europe">Europe</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Korea">Korea</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Norway">Norway</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Rest of the world">Rest of the world</option>
+            <option value="Romania">Romania</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Spain">Spain</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Turkiye">Turkiye</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="USA">USA</option>
+            <option value="World">World</option>
+        </select>
+        <br><br>
+
         <label for="powertrain">Tipo de Motorização:</label>
-        <input type="text" id="powertrain" name="powertrain" value="" placeholder="Insira o tipo de motorização"><br><br>
+        <select id="powertrain" name="powertrain">
+            <option value="EV">EV - Veículo Eletríco</option>
+            <option value="BEV">BEV - Veículo a Bateria</option>
+            <option value="PHEV">PHEV - Veículo Hibrído</option>
+            <option value="FCEV">FCEV - Veículo Elétrico a Célula de Combustível</option>
+        </select>
+        <br><br>
+
         <label for="year">Ano:</label>
-        <input type="text" id="year" name="year" value="" placeholder="Insira o ano (2010-2035)" min="2010" max="2035"><br><br>
-        <label for="unit">Unidade:</label>
-        <input type="text" id="unit" name="unit" value="" placeholder="Insira a unidade"><br><br>
+        <input type="number" id="year" name="year" placeholder="Insira o ano (2010-2035)" min="2010" max="2035"><br><br>
+
         <label for="value">Valor:</label>
-        <input type="text" id="value" name="value" value="" placeholder="Insira o valor (entre 0.00001 e 440000000)" min="0.00001" max="440000000" step="any"><br><br>
-        <input type="submit" value="Submeter">
+        <input type="number" id="value" name="value" placeholder="Insira o valor (entre 0.00001 e 440000000)" min="0.00001" max="440000000" step="any"><br><br>
+
+        <input type="submit" value="Calcular">
     </form>
 </body>
 </html>
