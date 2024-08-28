@@ -18,24 +18,20 @@ def predict():
     try:
         # Dados de entrada ajustados para o modelo PMML
         input_data = {
-            'region': request.form.get('region', 'Europe'),
-            'category': request.form.get('category', 'Historical'),
-            'parameter': request.form.get('parameter', 'EV stock share'),
-            'mode': request.form.get('mode', 'Cars'),
-            'powertrain': request.form.get('powertrain', 'EV'),
+            'region': request.form.get('region'),
+            'category': request.form.get('category'),
+            'parameter': request.form.get('parameter'),
+            'powertrain': request.form.get('powertrain'),
             'year': float(request.form.get('year')),
             'unit': request.form.get('unit', 'percent'),
             'value': float(request.form.get('value'))
         }
 
-        # Debug: Exibir os dados de entrada
-        print("Dados de entrada para predição:", input_data)
-
-        # Preparar os dados para o modelo
+        # DataFrame para o modelo prever o 'mode'
         data = pd.DataFrame([input_data])
 
-        # Debug: Exibir o DataFrame preparado para o modelo
-        print("DataFrame para predição:", data)
+        # Debug: Exibir os dados de entrada
+        print("Dados de entrada para predição:", input_data)
 
         # Fazer a previsão com o modelo carregado
         result = model.predict(data)
@@ -43,15 +39,15 @@ def predict():
         # Debug: Exibir todos os resultados retornados pelo modelo
         print("Resultado completo do modelo:", result)
 
-        # Obter a predição (ajuste conforme necessário)
-        prediction = result.iloc[0].to_dict()
+        # Critério ajustado para "Carro" ou "Ônibus"
+        predicted_mode = 'Carro' if result['value*'].iloc[0] > -0.0717 else 'Ônibus'
 
         # Passar os valores para o template HTML
         output = {
             'region': input_data['region'],
             'year': input_data['year'],
             'value': input_data['value'],
-            'prediction': prediction  # Ajuste para a classe prevista
+            'prediction': predicted_mode  # "Carro" ou "Ônibus"
         }
 
         return render_template('result.html', result=output)

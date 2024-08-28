@@ -9,11 +9,7 @@
     <p>Ano: {{ result['year'] }}</p>
     <p>Valor: {{ result['value'] }}</p>
     <h2>Predição:</h2>
-    <ul>
-        {% for key, value in result['prediction'].items() %}
-            <li>{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
+    <p>{{ result['prediction'] }}</p> <!-- Exibindo diretamente a predição -->
     <a href="/">Voltar</a>
 </body>
 </html>
