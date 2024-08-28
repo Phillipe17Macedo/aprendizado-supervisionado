@@ -4,33 +4,31 @@
     <title>Predição com PMML</title>
 </head>
 <body>
-    <h1>Previsão</h1>
+    <h1>Previsão de Estoque de EVs</h1>
     <form action="/predict" method="post">
         <label for="region">Região:</label>
-        <input type="text" id="region" name="region" value="Europe"><br><br>
+        <input type="text" id="region" name="region" value="Europe" placeholder="Insira a região"><br><br>
 
         <label for="category">Categoria:</label>
-        <input type="text" id="category" name="category" value="Historical"><br><br>
+        <input type="text" id="category" name="category" value="Historical" placeholder="Insira a categoria"><br><br>
 
         <label for="parameter">Parâmetro:</label>
-        <input type="text" id="parameter" name="parameter" value="EV stock share"><br><br>
+        <input type="text" id="parameter" name="parameter" value="EV stock share" placeholder="Insira o parâmetro"><br><br>
 
         <label for="mode">Modo:</label>
-        <input type="text" id="mode" name="mode" value="Cars"><br><br>
+        <input type="text" id="mode" name="mode" value="Cars" placeholder="Insira o modo"><br><br>
 
         <label for="powertrain">Tipo de Motorização:</label>
-        <input type="text" id="powertrain" name="powertrain" value="EV"><br><br>
+        <input type="text" id="powertrain" name="powertrain" value="EV" placeholder="Insira o tipo de motorização"><br><br>
 
         <label for="year">Ano:</label>
-        <input type="number" id="year" name="year" value="2025" min="2010" max="2035"><br><br>
-        <small>Insira um valor entre 2010 e 2035.</small><br><br>
+        <input type="number" id="year" name="year" value="2025" placeholder="Insira o ano (2010-2035)" min="2010" max="2035"><br><br>
 
         <label for="unit">Unidade:</label>
-        <input type="text" id="unit" name="unit" value="percent"><br><br>
+        <input type="text" id="unit" name="unit" value="percent" placeholder="Insira a unidade"><br><br>
 
         <label for="value">Valor:</label>
-        <input type="number" id="value" name="value" value="5000" min="1" max="440000000"><br><br>
-        <small>Insira um valor entre 1 e 440,000,000.</small><br><br>
+        <input type="number" id="value" name="value" value="5000" placeholder="Insira o valor (entre 0.00001 e 440000000)" min="0.00001" max="440000000" step="any"><br><br>
 
         <input type="submit" value="Submeter">
     </form>
