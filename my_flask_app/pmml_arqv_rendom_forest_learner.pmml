@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="phsto">
+    <Application name="KNIME" version="5.2.1"/>
+  </Header>
+  <DataDictionary numberOfFields="8">
+    <DataField name="region" optype="categorical" dataType="string">
+      <Value value="Australia"/>
+      <Value value="Austria"/>
+      <Value value="Belgium"/>
+      <Value value="Brazil"/>
+      <Value value="Bulgaria"/>
+      <Value value="Canada"/>
+      <Value value="Chile"/>
+      <Value value="China"/>
+      <Value value="Colombia"/>
+      <Value value="Costa Rica"/>
+      <Value value="Croatia"/>
+      <Value value="Cyprus"/>
+      <Value value="Czech Republic"/>
+      <Value value="Denmark"/>
+      <Value value="Estonia"/>
+      <Value value="EU27"/>
+      <Value value="Europe"/>
+      <Value value="Finland"/>
+      <Value value="France"/>
+      <Value value="Germany"/>
+      <Value value="Greece"/>
+      <Value value="Hungary"/>
+      <Value value="Iceland"/>
+      <Value value="India"/>
+      <Value value="Ireland"/>
+      <Value value="Israel"/>
+      <Value value="Italy"/>
+      <Value value="Japan"/>
+      <Value value="Korea"/>
+      <Value value="Latvia"/>
+      <Value value="Lithuania"/>
+      <Value value="Luxembourg"/>
+      <Value value="Mexico"/>
+      <Value value="Netherlands"/>
+      <Value value="New Zealand"/>
+      <Value value="Norway"/>
+      <Value value="Poland"/>
+      <Value value="Portugal"/>
+      <Value value="Rest of the world"/>
+      <Value value="Romania"/>
+      <Value value="Seychelles"/>
+      <Value value="Slovakia"/>
+      <Value value="Slovenia"/>
+      <Value value="South Africa"/>
+      <Value value="Spain"/>
+      <Value value="Sweden"/>
+      <Value value="Switzerland"/>
+      <Value value="Turkiye"/>
+      <Value value="United Arab Emirates"/>
+      <Value value="United Kingdom"/>
+      <Value value="USA"/>
+      <Value value="World"/>
+    </DataField>
+    <DataField name="category" optype="categorical" dataType="string">
+      <Value value="Historical"/>
+      <Value value="Projection-STEPS"/>
+      <Value value="Projection-APS"/>
+    </DataField>
+    <DataField name="parameter" optype="categorical" dataType="string">
+      <Value value="EV stock share"/>
+      <Value value="EV sales share"/>
+      <Value value="EV sales"/>
+      <Value value="EV stock"/>
+      <Value value="Electricity demand"/>
+      <Value value="Oil displacement Mbd"/>
+      <Value value="Oil displacement, million lge"/>
+    </DataField>
+    <DataField name="mode" optype="categorical" dataType="string">
+      <Value value="Cars"/>
+      <Value value="Buses"/>
+    </DataField>
+    <DataField name="powertrain" optype="categorical" dataType="string">
+      <Value value="EV"/>
+      <Value value="BEV"/>
+      <Value value="PHEV"/>
+      <Value value="FCEV"/>
+    </DataField>
+    <DataField name="year" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="2010.0" rightMargin="2035.0"/>
+    </DataField>
+    <DataField name="unit" optype="categorical" dataType="string">
+      <Value value="percent"/>
+      <Value value="Vehicles"/>
+      <Value value="GWh"/>
+      <Value value="Milion barrels per day"/>
+      <Value value="Oil displacement, million lge"/>
+    </DataField>
+    <DataField name="value" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="1.29999998534913E-5" rightMargin="4.4E8"/>
+    </DataField>
+  </DataDictionary>
+  <TransformationDictionary>
+    <DerivedField displayName="year" name="year*" optype="continuous" dataType="double">
+      <Extension name="summary" extender="KNIME" value="Z-Score (Gaussian) normalization on 2 column(s)"/>
+      <NormContinuous field="year">
+        <LinearNorm orig="0.0" norm="-383.1185786060764"/>
+        <LinearNorm orig="1.0" norm="-382.9288625763933"/>
+      </NormContinuous>
+    </DerivedField>
+    <DerivedField displayName="value" name="value*" optype="continuous" dataType="double">
+      <Extension name="summary" extender="KNIME" value="Z-Score (Gaussian) normalization on 2 column(s)"/>
+      <NormContinuous field="value">
+        <LinearNorm orig="0.0" norm="-0.07227711653569541"/>
+        <LinearNorm orig="1.0" norm="-0.07227700451014178"/>
+      </NormContinuous>
+    </DerivedField>
+  </TransformationDictionary>
+</PMML>

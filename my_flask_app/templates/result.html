@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado da Predição</title>
+</head>
+<body>
+    <h1>Resultado da Predição</h1>
+    <p>Região: {{ result['region'] }}</p>
+    <p>Ano: {{ result['year'] }}</p>
+    <p>Valor: {{ result['value'] }}</p>
+    <h2>Predição:</h2>
+    <ul>
+        {% for key, value in result['prediction'].items() %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>
