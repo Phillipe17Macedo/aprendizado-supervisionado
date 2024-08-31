@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado da Predição</title>
+    <title>Resultado da Classificação</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -62,14 +62,17 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="/static/images/background-image.png" alt="Logo" width="50" borderRadius="20">
+            <img src="/static/images/background-image.png" alt="Logo" width="50">
         </div>
-        <h1>Resultado da Predição</h1>
-        <p>Região: {{ result['region'] }}</p>
-        <p>Ano: {{ result['year'] }}</p>
-        <p>Valor: {{ result['value'] }}</p>
+        <h1>Resultado da Classificação</h1>
+        <p>Ratings: {{ result['ratings'] }}</p>
+        <p>RAM: {{ result['ram'] }}</p>
+        <p>ROM: {{ result['rom'] }}</p>
+        <p>Câmera Principal: {{ result['primary_cam'] }}</p>
+        <p>Câmera Selfie: {{ result['selfi_cam'] }}</p>
+        <p>Potência da Bateria: {{ result['battery_power'] }}</p>
         <div class="prediction">
-            <p>Tipo de Veículo: {{ result['prediction'] }}</p>
+            <p>Categoria Prevista: {{ result['prediction'] }}</p>
         </div>
         <a href="/" class="back-link">Voltar</a>
     </div>

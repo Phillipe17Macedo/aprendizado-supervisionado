@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="phsto">
+    <Application name="KNIME" version="5.2.1"/>
+  </Header>
+  <DataDictionary numberOfFields="7">
+    <DataField name="Ratings" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="RAM" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="ROM" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Primary_Cam" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Selfi_Cam" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Battery_Power" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="category" optype="categorical" dataType="string">
+      <Value value="Intermediário"/>
+      <Value value="Básico"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="Ratings" invalidValueTreatment="asIs"/>
+      <MiningField name="RAM" invalidValueTreatment="asIs"/>
+      <MiningField name="ROM" invalidValueTreatment="asIs"/>
+      <MiningField name="Primary_Cam" invalidValueTreatment="asIs"/>
+      <MiningField name="Selfi_Cam" invalidValueTreatment="asIs"/>
+      <MiningField name="Battery_Power" invalidValueTreatment="asIs"/>
+      <MiningField name="category" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="Básico" recordCount="963.0">
+      <True/>
+      <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+      <ScoreDistribution value="Básico" recordCount="513.0"/>
+      <Node id="1" score="Básico" recordCount="209.0">
+        <SimplePredicate field="Selfi_Cam" operator="lessOrEqual" value="0.32608695652173914"/>
+        <ScoreDistribution value="Intermediário" recordCount="0.0"/>
+        <ScoreDistribution value="Básico" recordCount="209.0"/>
+      </Node>
+      <Node id="2" score="Intermediário" recordCount="754.0">
+        <SimplePredicate field="Selfi_Cam" operator="greaterThan" value="0.32608695652173914"/>
+        <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+        <ScoreDistribution value="Básico" recordCount="304.0"/>
+        <Node id="3" score="Básico" recordCount="150.0">
+          <SimplePredicate field="Ratings" operator="lessOrEqual" value="0.42500000000000016"/>
+          <ScoreDistribution value="Intermediário" recordCount="0.0"/>
+          <ScoreDistribution value="Básico" recordCount="150.0"/>
+        </Node>
+        <Node id="4" score="Intermediário" recordCount="604.0">
+          <SimplePredicate field="Ratings" operator="greaterThan" value="0.42500000000000016"/>
+          <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+          <ScoreDistribution value="Básico" recordCount="154.0"/>
+          <Node id="5" score="Básico" recordCount="101.0">
+            <SimplePredicate field="Battery_Power" operator="lessOrEqual" value="0.24698795180722893"/>
+            <ScoreDistribution value="Intermediário" recordCount="0.0"/>
+            <ScoreDistribution value="Básico" recordCount="101.0"/>
+          </Node>
+          <Node id="6" score="Intermediário" recordCount="503.0">
+            <SimplePredicate field="Battery_Power" operator="greaterThan" value="0.24698795180722893"/>
+            <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+            <ScoreDistribution value="Básico" recordCount="53.0"/>
+            <Node id="7" score="Básico" recordCount="39.0">
+              <SimplePredicate field="ROM" operator="lessOrEqual" value="0.06299212598425197"/>
+              <ScoreDistribution value="Intermediário" recordCount="0.0"/>
+              <ScoreDistribution value="Básico" recordCount="39.0"/>
+            </Node>
+            <Node id="8" score="Intermediário" recordCount="464.0">
+              <SimplePredicate field="ROM" operator="greaterThan" value="0.06299212598425197"/>
+              <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+              <ScoreDistribution value="Básico" recordCount="14.0"/>
+              <Node id="9" score="Básico" recordCount="14.0">
+                <SimplePredicate field="RAM" operator="lessOrEqual" value="0.22727272727272724"/>
+                <ScoreDistribution value="Intermediário" recordCount="0.0"/>
+                <ScoreDistribution value="Básico" recordCount="14.0"/>
+              </Node>
+              <Node id="10" score="Intermediário" recordCount="450.0">
+                <SimplePredicate field="RAM" operator="greaterThan" value="0.22727272727272724"/>
+                <ScoreDistribution value="Intermediário" recordCount="450.0"/>
+                <ScoreDistribution value="Básico" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
